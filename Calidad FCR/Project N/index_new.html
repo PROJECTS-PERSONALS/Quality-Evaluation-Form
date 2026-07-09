@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title> Formato De Evaluación De La Calidad Y FCR — Con Monitoreo De Llamadas </title>
+		<link rel="stylesheet" href="./style_new.css"/>
+	</head>
+	<body>
+		<div class="page-wrapper">
+			<!-- HEADER -->
+			<header class="form-header">
+				<div class="header-logo">
+					<svg viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg" width="86" height="48" aria-hidden="true">
+						<defs>
+							<linearGradient id="lg2" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#1a6fc4"/> <stop offset="100%" stop-color="#0a3a7a"/> </linearGradient>
+							<linearGradient id="lg4" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#2589e0"/> <stop offset="100%" stop-color="#0d52a4"/> </linearGradient>
+							<linearGradient id="lgh" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#c8cdd6"/> <stop offset="100%" stop-color="#8a8f9a"/> </linearGradient> 
+						</defs>
+						<text x="4" y="68" class="logo-glyph" fill="url(#lg2)"> 2 </text>
+						<text x="54" y="68" class="logo-glyph" fill="url(#lg4)"> 4 </text>
+						<text x="108" y="68" class="logo-glyph" fill="url(#lgh)"> h </text>
+					</svg>
+				</div>
+				<div class="header-title"> <h1> FORMATO DE EVALUACIÓN DE LA CALIDAD Y FCR - MESA DE AYUDA </h1> </div>
+			</header>
+			<!-- INFORMACIÓN GENERAL -->
+			<section class="section-card">
+				<div class="section-title-bar"> Información General (Datos De Control) </div>
+				<table class="info-table">
+					<tbody>
+						<tr>
+							<td class="info-label"> Nombre Del Analista: </td>
+							<td class="info-value">
+								<select id="selectAnalista" class="form-select analyst-select">
+									<option value=""> [Seleccione Un Analista] </option>
+									<option value="1020110871"> Juan Diego Mazo Lezcano </option>
+									<option value="1022142959"> Juan José Santana Garzón </option>
+									<option value="1152464110"> Juan Pablo Gaviria Correa </option>
+									<option value="1000401771"> Julián García Araque </option>
+									<option value="1076819340"> Kevin Daniel Mosquera Córdoba </option>
+									<option value="1104410026"> William David Jarava Solano </option>
+									<option value="72203802"> Yin Carlos Martínez Pérez </option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="info-label"> Nombre Del Evaluador: </td>
+							<td class="info-value evaluator-name"> Hector Samir Perez Perez </td>
+						</tr>
+						<tr>
+							<td class="info-label"> Fecha Evaluación: </td>
+							<td class="info-value date-cell">
+								<span id="fechaDisplay" class="fecha-display"> </span>
+								<button class="btn-calendar" id="btnCalendar" title="Seleccionar fecha" type="button" aria-label="Abrir calendario">
+									<svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+										<rect x="2" y="4" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+										<path d="M2 8h16" stroke="currentColor" stroke-width="1.5"/>
+										<path d="M6 2v3M14 2v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+									</svg>
+								</button>
+								<input type="date" id="fechaPicker" class="date-picker-hidden"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="info-label"> ID De La Llamada/Ticket: </td>
+							<td class="info-value"> <input type="text" id="ticketId" class="ticket-input" value="R-000000"/> </td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<!-- MATRIZ DE EVALUACIÓN -->
+			<section class="section-card">
+				<div class="section-title-bar"> Matriz De Evaluación (Total 100%) </div>
+				<table class="eval-table">
+					<thead>
+						<tr>
+							<th class="col-criteria"> </th>
+							<th class="col-si"> SI </th>
+							<th class="col-no"> NO </th>
+							<th class="col-na"> N/A </th>
+							<th class="col-result"> Resumen De Puntuación (1) </th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Bloque A: Protocolo y Conectividad -->
+						<tr class="block-header-row">
+							<td colspan="5">
+								<div class="block-header">
+									<span class="block-title"> Protocolo Y Conectividad (20%) </span>
+									<button class="btn-overview" type="button" data-overview="protocolo" title="Ver descripción del bloque" aria-label="Información sobre Protocolo y Conectividad"> Descripción ▼ </button>
+								</div>
+							</td>
+						</tr>
+						<tr class="overview-row" id="overview-protocolo">
+							<td colspan="5">
+								<div class="overview-content">
+									<p class="overview-intro"> Este bloque mide el cumplimiento de los estándares de marca y el respeto al tiempo del usuario. </p>
+									<ul>
+										<li> <strong> Saludo y Apertura (5%): </strong> Utiliza el saludo oficial, dice su nombre de forma clara, menciona el nombre de la empresa y muestra disposición de ayuda. 
+									    <br> Buenos (días, tardes o noches), bienvenido a la mesa de ayuda, le habla (nombre analista), con quien tengo el gusto de hablar. ¿En qué le puedo ayudar? </li>
+										<li> <strong> Uso del Tiempo en Espera/Hold (5%): </strong> Solicita permiso para poner en espera, explica la razón, no supera los 2 minutos sin reportarse y agradece al volver. </li>
+										<li> <strong> Cierre y Despedida (5%): </strong> Confirma que no existan más dudas, agradece la llamada, utiliza la frase de cierre oficial y espera a que el usuario cuelgue. </li>
+										<li> <strong> Transferencia a la Encuesta de Satisfacción (5%): </strong> Solicita al usuario que colabore con el diligenciamiento de la encuesta de satisfacción. </li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr class="criteria-row" data-key="saludo" data-pct="5">
+							<td class="criteria-name"> Saludo Y Apertura (5%) </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="saludo" value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="saludo" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="saludo" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-saludo"> — </span> </td>
+						</tr>
+						<tr class="criteria-row" data-key="hold" data-pct="5">
+							<td class="criteria-name"> Uso Del Tiempo En Espera/Hold (5%) </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="hold" value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="hold" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="hold" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-hold"> — </span> </td>
+						</tr>
+						<tr class="criteria-row" data-key="cierre" data-pct="5">
+							<td class="criteria-name"> Cierre Y Despedida (5%) </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="cierre" value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="cierre" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="cierre" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-cierre"> — </span> </td>
+						</tr>
+						<tr class="criteria-row" data-key="encuesta" data-pct="5">
+							<td class="criteria-name"> Transferencia A La Encuesta De Satisfacción (5%)</td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="encuesta" value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="encuesta" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="encuesta" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-encuesta"> — </span> </td>
+						</tr>
+						<!-- Bloque B: Habilidades Blandas -->
+						<tr class="block-header-row">
+							<td colspan="5">
+								<div class="block-header">
+									<span class="block-title"> Habilidades Blandas Y Comunicación (20%) </span>
+									<button class="btn-overview" type="button" data-overview="habilidades" title="Ver descripción del bloque" aria-label="Información sobre Habilidades Blandas"> Descripción ▼ </button>
+								</div>
+							</td>
+						</tr>
+						<tr class="overview-row" id="overview-habilidades">
+							<td colspan="5">
+								<div class="overview-content">
+									<p class="overview-intro"> Este bloque mide la empatía y el manejo de la interacción con el usuario. </p>
+									<ul>
+										<li> <strong> Empatía y Escucha Activa (10%): </strong> Muestra interés genuino, no interrumpe al usuario, valida su problema y mantiene una actitud colaborativa. </li>
+										<li> <strong> Lenguaje y Tono de Voz (10%): </strong> Utiliza un vocabulario profesional (evita tecnicismos excesivos o modismos), mantiene un tono calmado, seguro y un ritmo adecuado. </li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr class="criteria-row" data-key="empatia" data-pct="10">
+							<td class="criteria-name"> Empatía Y Escucha Activa (10%) </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="empatia" value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="empatia" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="empatia" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-empatia"> — </span> </td>
+						</tr>
+						<tr class="criteria-row" data-key="lenguaje" data-pct="10">
+							<td class="criteria-name"> Lenguaje Y Tono de Voz (10%) </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="lenguaje" value="si"/> <span> </span></label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="lenguaje" value="no"/> <span> </span></label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="lenguaje" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-lenguaje"> — </span> </td>
+						</tr>
+						<!-- Bloque C: Diagnóstico y Procesos -->
+						<tr class="block-header-row">
+							<td colspan="5">
+								<div class="block-header">
+									<span class="block-title"> Diagnóstico Y Procesos (20%) </span>
+									<button class="btn-overview" type="button" data-overview="diagnostico" title="Ver descripción del bloque" aria-label="Información sobre Diagnóstico y Procesos"> Descripción ▼ </button>
+								</div>
+							</td>
+						</tr>
+						<tr class="overview-row" id="overview-diagnostico">
+							<td colspan="5">
+								<div class="overview-content">
+									<p class="overview-intro"> Este bloque evalúa la capacidad técnica para entender el problema y seguir las reglas del negocio. </p>
+									<ul>
+										<li> <strong> Sondeo y Recopilación de Datos (5%): </strong> Realiza las preguntas correctas para entender la falla, valida los datos de contacto y confirma el impacto del problema. </li>
+										<li> <strong> Uso de Herramientas y Gestión (10%): </strong> Registra el ticket correctamente en tiempo real, categoriza adecuadamente el incidente y documenta la bitácora con claridad, incluyendo registro fotográfico y anexos. </li>
+										<li> <strong> Seguridad de la Información (5%): </strong> Cumple con las políticas de validación de identidad del usuario antes de modificar contraseñas o accesos. </li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr class="criteria-row" data-key="sondeo" data-pct="5">
+							<td class="criteria-name"> Sondeo y Recopilación de Datos (5%)</td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="sondeo" value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="sondeo" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="sondeo" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-sondeo"> — </span> </td>
+						</tr>
+						<tr class="criteria-row" data-key="herramientas" data-pct="10">
+							<td class="criteria-name"> Uso de Herramientas y Gestión (10%) </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="herramientas"  value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="herramientas" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="herramientas" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-herramientas"> — </span> </td>
+						</tr>
+						<tr class="criteria-row" data-key="seguridad" data-pct="5">
+							<td class="criteria-name"> Seguridad de la Información (5%) </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="seguridad" value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="seguridad" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="seguridad" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-seguridad"> — </span> </td>
+						</tr>
+						<!-- Bloque D: FCR -->
+						<tr class="block-header-row">
+							<td colspan="5">
+								<div class="block-header">
+									<span class="block-title"> Resolución en Primer Contacto - FCR (40%) </span>
+									<button class="btn-overview" type="button" data-overview="fcr" title="Ver descripción del bloque" aria-label="Información sobre FCR"> Descripción ▼ </button>
+								</div>
+							</td>
+						</tr>
+						<tr class="overview-row" id="overview-fcr">
+							<td colspan="5">
+								<div class="overview-content">
+									<p class="overview-intro"> Este bloque evalúa la capacidad para resolver de manera efectiva, correcta y definitiva el incidente durante el primer contacto. </p>
+									<ul>
+										<li> <strong> Efectividad Técnica (15%): </strong> Aplica correctamente los árboles de  decisión o la base de conocimientos para brindar la solución exacta. </li>
+										<li> <strong>Validación de la Solución (15%): </strong> Realiza pruebas junto con el usuario para confirmar que el problema quedó resuelto antes de finalizar la llamada. </li>
+										<li> <strong> Evitación de Reincidencia / Educación (10%): </strong> Explica brevemente al usuario por qué ocurrió la falla o cómo prevenirla, asegurando que no vuelva a llamar por el mismo motivo. </li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr class="criteria-row" data-key="efectividad" data-pct="15">
+							<td class="criteria-name"> Efectividad Técnica (15%) </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="efectividad" value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="efectividad" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="efectividad" value="na"/><span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-efectividad"> — </span> </td>
+						</tr>
+						<tr class="criteria-row" data-key="validacion" data-pct="15">
+							<td class="criteria-name"> Validación de la Solución (15%) </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="validacion"  value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="validacion" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="validacion" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-validacion"> — </span> </td>
+						</tr>
+						<tr class="criteria-row" data-key="reincidencia" data-pct="10">
+							<td class="criteria-name"> Evitación de Reincidencia / Educación (10%) </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="reincidencia" value="si"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="reincidencia" value="no"/> <span> </span> </label> </td>
+							<td class="radio-cell"> <label class="radio-lbl"> <input type="radio" name="reincidencia" value="na"/> <span> </span> </label> </td>
+							<td class="result-cell"> <span class="result-badge" id="res-reincidencia"> — </span> </td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<!-- FILA INFERIOR: Resumen (2) + Errores Críticos -->
+			<div class="bottom-grid">
+				<!-- Errores Críticos -->
+				<section class="section-card bottom-right" id="knockoutSection">
+					<div class="section-title-bar"> Errores Críticos (Ítem Knockout / Zero Tolerance) </div>
+					<div class="knockout-intro">
+						<p> Si el analista comete uno de estos errores, la calificación de la llamada baja automáticamente a 0%, independientemente del resto del desempeño: </p>
+						<p class="ko-disabled-note" id="koDisabledNote" hidden> Evaluación perfecta — no fue necesario registrar Errores Críticos. Este módulo se deshabilitó automáticamente. </p>
+					</div>
+					<table class="knockout-table">
+						<tbody>
+							<tr class="knockout-header-row">
+								<td colspan="2"> <button class="btn-overview btn-overview-ko" type="button" data-overview="knockout" aria-label="Información sobre Errores Críticos"> Descripción Errores Críticos ▼ </button> </td>
+							</tr>
+							<tr class="overview-row" id="overview-knockout">
+								<td colspan="2">
+									<div class="overview-content">
+										<ul>
+											<li> <strong> Maltrato al usuario: </strong> Colgar la llamada deliberadamente, alzar la voz o mostrar grosería. </li>
+											<li> <strong> Información falsa / Inventar procedimientos: </strong> Dar soluciones que puedan dañar el equipo del usuario o mentir sobre los procesos, procedimientos o tiempos de atención. </li>
+											<li> <strong> Incumplimiento de Seguridad: </strong> Modificar accesos o entregar información confidencial sin validar previamente la identidad del usuario. </li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+							<tr class="ko-item-row">
+								<td class="ko-label"> 1. Maltrato al usuario </td>
+								<td class="ko-radios">
+									<label class="ko-radio-lbl"> <input type="radio" name="ko_maltrato" value="si"/> NO </label>
+									<label class="ko-radio-lbl"> <input type="radio" name="ko_maltrato" value="no"/> SI </label>
+								</td>
+							</tr>
+							<tr class="ko-item-row">
+								<td class="ko-label"> 2. Información falsa / Inventar procedimientos </td>
+								<td class="ko-radios">
+									<label class="ko-radio-lbl"> <input type="radio" name="ko_info" value="si"/> NO </label>
+									<label class="ko-radio-lbl"> <input type="radio" name="ko_info" value="no"/> SI </label>
+								</td>
+							</tr>
+							<tr class="ko-item-row">
+								<td class="ko-label"> 3. Incumplimiento de Seguridad </td>
+								<td class="ko-radios">
+									<label class="ko-radio-lbl"> <input type="radio" name="ko_seguridad" value="si"/> NO </label>
+									<label class="ko-radio-lbl"> <input type="radio" name="ko_seguridad" value="no"/> SI </label>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<!-- Resumen de Puntuación (2) -->
+				<section class="section-card bottom-left">
+					<div class="section-title-bar"> Resumen De Puntuación (2) </div>
+					<table class="summary-table">
+						<thead>
+							<tr>
+								<th> Bloque De Evaluación </th>
+								<th> Porcentaje Asignado </th>
+								<th> Puntaje Obtenido </th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td> 1. Protocolo y Conectividad </td>
+								<td class="pct-assigned"> 15% </td>
+								<td class="pct-obtained" id="score-protocolo"> 0% </td>
+							</tr>
+							<tr>
+								<td> 2. Habilidades Blandas y Comunicación </td>
+								<td class="pct-assigned"> 20% </td>
+								<td class="pct-obtained" id="score-habilidades"> 0% </td>
+							</tr>
+							<tr>
+								<td> 3. Diagnóstico y Procesos </td>
+								<td class="pct-assigned"> 25% </td>
+								<td class="pct-obtained" id="score-diagnostico"> 0% </td>
+							</tr>
+							<tr>
+								<td> 4. Resolución En Primer Contacto (FCR) </td>
+								<td class="pct-assigned"> 40% </td>
+								<td class="pct-obtained" id="score-fcr"> 0% </td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr class="score-final-row">
+								<td colspan="2" class="score-final-label"> Puntuación Final (%) </td>
+								<td class="score-final-value" id="scoreFinal"> 0% </td>
+							</tr>
+						</tfoot>
+					</table>
+				</section>
+			</div> <!-- /.bottom-grid -->
+			<!-- FILA INFERIOR: Comentarios + Responsables -->
+			<div class="bottom-grid second-bottom-grid">
+				<!-- Comentarios y Plan de Acción -->
+				<section class="section-card comments-card">
+					<div class="section-title-bar"> Comentarios Y Plan De Acción </div>
+					<div class="comments-grid">
+						<div class="comment-col">
+							<label class="comment-label" for="fortalezas"> Fortalezas Detectadas </label>
+							<textarea id="fortalezas" class="auto-textarea" placeholder="Ej: Excelente manejo de la empatía y tono de voz" rows="3"></textarea>
+						</div>
+						<div class="comment-col">
+							<label class="comment-label" for="oportunidades"> Oportunidades De Mejora </label>
+							<textarea id="oportunidades" class="auto-textarea" placeholder="Ej: Olvidó validar la solución con el usuario al final" rows="3"></textarea>
+						</div>
+						<div class="comment-col">
+							<label class="comment-label" for="compromisos"> Compromisos / Plan De Acción </label>
+							<textarea id="compromisos" class="auto-textarea" placeholder="Ej: Reforzar el paso de validación en la base de conocimientos" rows="3"></textarea>
+						</div>
+					</div>
+				</section>
+				<!-- Responsables -->
+				<section class="section-card responsables-card">
+					<div class="section-title-bar"> Responsables </div>
+					<table class="responsables-table">
+						<thead>
+							<tr>
+								<th> Analista </th>
+								<th> Evaluador </th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="resp-name" id="respNombre"> [Seleccione Un Analista] </td>
+								<td class="resp-evaluador"> Hector Samir Perez Perez </td>
+							</tr>
+							<tr>
+								<td class="resp-cedula" id="respCedula"> [Cédula Automática] </td>
+								<td class="resp-evaluador"> 72275900 </td>
+							</tr>
+							<tr>
+								<td class="resp-firma"> Firma Del Analista </td>
+								<td class="resp-firma"> Firma Del Evaluador </td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+			</div> <!-- /.second-bottom-grid -->
+			<!-- MÓDULO: MONITOREO DE LLAMADAS -->
+			<section class="section-card monitoring-card" id="monitoreoSection">
+				<div class="monitoring-title-bar"> MONITOREO DE LLAMADAS </div>
+				<table class="monitoring-table" id="monitoringTable">
+					<thead>
+						<tr>
+							<th class="mon-col-name"> Nombre Del Analista </th>
+							<th> Monitoreo 1 </th>
+							<th> Monitoreo 2 </th>
+							<th> Monitoreo 3 </th>
+							<th> Monitoreo 4 </th>
+							<th> Monitoreo 5 </th>
+							<th class="mon-col-avg"> Promedio Individual </th>
+							<th class="mon-col-status"> Estatus/Nota </th>
+						</tr>
+					</thead>
+					<tbody id="monitoringBody">
+						<!-- Filas generadas dinámicamente por script nuevo.js a partir de ANALYSTS -->
+					</tbody>
+					<tfoot>
+						<tr class="monitoring-group-row">
+							<td class="mon-group-label"> Promedio Grupal </td>
+							<td id="groupM1"> 0% </td>
+							<td id="groupM2"> 0% </td>
+							<td id="groupM3"> 0% </td>
+							<td id="groupM4"> 0% </td>
+							<td id="groupM5"> 0% </td>
+							<td id="groupAvg"> 0% </td>
+							<td id="groupStatus"> 0% </td>
+						</tr>
+					</tfoot>
+				</table>
+			</section>
+		</div> <!-- /.page-wrapper -->
+		<!-- FOOTER: Limpiar / Imprimir -->
+		<div class="action-bar" id="actionBar" role="toolbar" aria-label="Acciones del documento">
+			<button class="btn-clear" id="btnClear" type="button" title="Reiniciar todo el formulario"> Limpiar </button>
+			<button class="btn-save" id="btnSave" type="button" title="Guardar el resultado en Monitoreo de Llamadas">
+				<svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+					<path d="M4 3h9l3 3v11a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.6"/>
+					<path d="M6 3v5h7V3" stroke="currentColor" stroke-width="1.6"/>
+					<rect x="6" y="11" width="8" height="6" stroke="currentColor" stroke-width="1.6"/>
+				</svg>
+				Guardar
+			</button>
+			<button class="btn-monitoreo" id="btnMonitoreo" type="button" title="Limpiar completamente el módulo de Monitoreo de Llamadas.">
+				<svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+					<path d="M4 6h12M8 6V4a1 1 0 011-1h2a1 1 0 011 1v2m-7 0 .7 10a1 1 0 001 .9h4.6a1 1 0 001-.9L15 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M8.5 9.5v5M11.5 9.5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+				</svg>
+				Limpiar Monitoreo
+			</button>
+			<button class="btn-print" id="btnPrint" type="button">
+				<svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+					<rect x="4" y="2" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1.6"/>
+					<path d="M4 8H2a1 1 0 00-1 1v6a1 1 0 001 1h2" stroke="currentColor" stroke-width="1.6"/>
+					<path d="M16 8h2a1 1 0 011 1v6a1 1 0 01-1 1h-2" stroke="currentColor" stroke-width="1.6"/>
+					<rect x="4" y="12" width="12" height="6" rx="1" stroke="currentColor" stroke-width="1.6"/>
+					<circle cx="15" cy="10.5" r="1" fill="currentColor"/>
+				</svg>
+				Imprimir
+			</button>
+		</div>
+		<div class="toast" id="toast" role="status" aria-live="polite"></div>
+		<script src="./scipt_new.js"> </script>
+	</body>
+</html>

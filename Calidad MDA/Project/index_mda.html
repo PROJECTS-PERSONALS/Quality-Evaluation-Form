@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> Formato de Evaluación de la Calidad de la Información — Mesa de Ayuda </title>
+		<link rel="stylesheet" href="./style_mda.css">
+	</head>
+	<body>
+		<main class="sheet" id="sheet">
+			<!-- ENCABEZADO -->
+			<header class="head">
+				<div class="head-logo">
+					<svg viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg" class="logo-svg" aria-hidden="true">
+						<defs>
+							<linearGradient id="lg2" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#1a6fc4"> </stop> <stop offset="100%" stop-color="#0a3a7a"> </stop> </linearGradient>
+							<linearGradient id="lg4" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#2589e0"> </stop> <stop offset="100%" stop-color="#0d52a4"> </stop> </linearGradient>
+							<linearGradient id="lgh" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#c8cdd6"> </stop> <stop offset="100%" stop-color="#8a8f9a"> </stop> </linearGradient>
+						</defs>
+						<text x="4" y="68" class="logo-glyph" fill="url(#lg2)"> 2 </text>
+						<text x="54" y="68" class="logo-glyph" fill="url(#lg4)"> 4 </text>
+						<text x="108" y="68" class="logo-glyph" fill="url(#lgh)"> h </text>
+					</svg>
+				</div>
+				<div class="head-title"> FORMATO DE EVALUACIÓN DE LA CALIDAD DE LA INFORMACIÓN </div>
+			</header>
+			<!-- BARRA REQUERIMIENTO -->
+			<div class="req-bar"> Mesa de Ayuda de Tecnología - Basado en Requerimiento <span id="headerReqId" class="req-id"> R-000000 </span> </div>
+			<!-- BLOQUE DE DATOS DEL CASO -->
+			<section class="info-grid">
+				<div class="info-row">
+					<div class="info-label"> ID Caso Evaluado: </div>
+					<div class="info-value"> <input type="text" id="idCaso" class="input-plain input-red" value="R-000000" maxlength="20" autocomplete="off"> </div>
+					<div class="info-label"> Fecha Evaluación: </div>
+					<div class="info-value date-field">
+						<input type="text" id="fechaDisplay" class="input-plain input-date-display" readonly>
+						<button type="button" id="calendarBtn" class="calendar-btn" title="Seleccionar fecha" aria-label="Seleccionar fecha">
+							<svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+								<rect x="2.5" y="3.5" width="15" height="14" rx="1.5" stroke="currentColor" stroke-width="1.4"> </rect>
+								<path d="M2.5 7.5H17.5" stroke="currentColor" stroke-width="1.4"> </path>
+								<path d="M6 2V5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"> </path>
+								<path d="M14 2V5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"> </path>
+							</svg>
+						</button>
+						<input type="date" id="fechaHidden" class="fecha-hidden" aria-hidden="true" tabindex="-1">
+					</div>
+				</div>
+				<div class="info-row">
+					<div class="info-label"> Evaluador: </div>
+					<div class="info-value info-fixed"> Hector Samir Perez Perez </div>
+					<div class="info-label"> Analista del Caso: </div>
+					<div class="info-value">
+						<select id="analista" class="select-field select-placeholder">
+							<option value="" data-placeholder="true"> [Seleccione Un Analista] </option>
+							<option value="Juan Diego Mazo Lezcano"> Juan Diego Mazo Lezcano </option>
+							<option value="Juan José Santana Garzón"> Juan José Santana Garzón </option>
+							<option value="Juan Pablo Gaviria Correa"> Juan Pablo Gaviria Correa </option>
+							<option value="Julián García Araque"> Julián García Araque </option>
+							<option value="Kevin Daniel Mosquera"> Kevin Daniel Mosquera </option>
+							<option value="William David Jarava Solano"> William David Jarava Solano </option>
+							<option value="Yin Carlos Martínez Pérez"> Yin Carlos Martínez Pérez </option>
+						</select>
+					</div>
+				</div>
+				<div class="info-row">
+					<div class="info-label"> Organización: </div>
+					<div class="info-value info-fixed"> Hospital General de Medellín </div>
+					<div class="info-label"> Estado del Caso: </div>
+					<div class="info-value">
+						<select id="estado" class="select-field select-placeholder">
+							<option value="" data-placeholder="true"> [Seleccione Un Estado] </option>
+							<option value="Abierto"> Abierto </option>
+							<option value="Pendiente"> Pendiente </option>
+							<option value="Cerrado"> Cerrado </option>
+						</select>
+					</div>
+				</div>
+			</section>
+			<!-- TABLA DE EVALUACIÓN -->
+			<section class="table-wrap">
+				<table class="eval-table" id="evalTable">
+					<thead>
+						<tr>
+							<th class="col-seccion"> Sección / Ítem de Información del Caso </th>
+							<th class="col-criterio"> Criterio de Calidad a Evaluar </th>
+							<th class="col-peso"> Peso (%) </th>
+							<th class="col-calif"> Calificación (0 o 1) </th>
+							<th class="col-puntaje"> Puntaje Logrado </th>
+							<th class="col-obs"> Observaciones / Hallazgos Encontrados </th>
+						</tr>
+					</thead>
+					<tbody id="evalBody">
+						<!-- filas generadas por script.js -->
+					</tbody>
+					<tfoot>
+						<tr class="total-row">
+							<td colspan="2" class="total-label"> TOTAL CALIDAD DE LA INFORMACIÓN </td>
+							<td class="total-peso" id="totalPeso"> 0% </td>
+							<td class="total-calif" id="totalCalif"> 0 </td>
+							<td class="total-puntaje" id="totalPuntaje"> 0% </td>
+							<td></td>
+						</tr>
+					</tfoot>
+				</table>
+			</section>
+			<!-- BARRA DE ACCIONES (no imprimible) -->
+			<div class="action-bar" id="actionBar" role="toolbar" aria-label="Acciones del documento">
+				<button class="btn-clear" id="btnClear" type="button" title="Reiniciar todo el formulario"> Limpiar </button>
+				<button class="btn-print" id="btnPrint" type="button">
+					<svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+						<rect x="4" y="2" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1.6"> </rect>
+						<path d="M4 8H2a1 1 0 00-1 1v6a1 1 0 001 1h2" stroke="currentColor" stroke-width="1.6"> </path>
+						<path d="M16 8h2a1 1 0 011 1v6a1 1 0 01-1 1h-2" stroke="currentColor" stroke-width="1.6"> </path>
+						<rect x="4" y="12" width="12" height="6" rx="1" stroke="currentColor" stroke-width="1.6"> </rect>
+						<circle cx="15" cy="10.5" r="1" fill="currentColor"> </circle>
+					</svg>
+					Imprimir
+				</button>
+			</div>
+		</main>
+		<script src="./script_mda.js"></script>
+	</body>
+</html>

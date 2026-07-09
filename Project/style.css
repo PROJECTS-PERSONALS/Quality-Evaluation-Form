@@ -1,0 +1,142 @@
+:root {
+	--navy-deep: #071229;
+	--navy-mid: #0d2347;
+	--navy-panel: #0f2b57;
+	--blue-dark: #1a3a6b;
+	--blue-mid: #1f5fa6;
+	--blue-bright: #2980d9;
+	--white: #ffffff;
+	--gray-text: #e7ecf5;
+	--gray-subtle: #a9b8d1;
+	--card-bg: #ffffff;
+	--card-text: #16233f;
+	--card-subtitle: #5b6b8c;
+	--shadow-soft: 0 10px 30px rgba(5, 15, 35, 0.35);
+	--shadow-hover: 0 16px 40px rgba(5, 15, 35, 0.45);
+	--font-main: 'Segoe UI', Arial, Helvetica, sans-serif;
+	--dur-logo: 900ms;
+	--dur-msg: 750ms;
+	--dur-card: 650ms;
+	--ease-elegant: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; min-height: 100%; font-family: var(--font-main); }
+
+body { display: flex; min-height: 100vh; overflow-x: hidden; color: var(--gray-text); background: radial-gradient(circle at 50% 0%, var(--navy-panel) 0%, var(--navy-mid) 45%, var(--navy-deep) 100%); }
+
+.stage {
+	width: 100%;
+	margin: auto;
+	display: flex;
+	max-width: 720px;
+	text-align: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 64px 24px 56px;
+}
+
+/* Estado base de animación: oculto hasta activarse */
+.anim-el { opacity: 0; will-change: opacity, transform; }
+
+/* LOGO */
+.logo-wrap { margin-bottom: 18px; transform: scale(0.82); transition: opacity var(--dur-logo) var(--ease-elegant), transform var(--dur-logo) var(--ease-elegant); }
+
+.logo-wrap.is-visible { opacity: 1; transform: scale(1); }
+
+.logo-svg { width: 108px; height: 60px; display: block; }
+
+.logo-glyph { font-size: 66px; font-weight: 700; font-family: Georgia, 'Times New Roman', serif; }
+
+/* MENSAJE DE BIENVENIDA */
+.welcome { margin-bottom: 40px; transform: scale(0.9); transition: opacity var(--dur-msg) var(--ease-elegant), transform var(--dur-msg) var(--ease-elegant); }
+
+.welcome.is-visible { opacity: 1; transform: scale(1); }
+
+.welcome-title { margin: 0 0 6px; font-weight: 700; color: var(--white); letter-spacing: 0.2px; font-size: clamp(24px, 4vw, 34px); }
+
+.welcome-subtitle { margin: 0; font-weight: 400; color: var(--gray-subtle); font-size: clamp(15px, 2.4vw, 18px); }
+
+/* TARJETAS */
+.cards { gap: 22px; width: 100%; display: grid; margin-bottom: 22px; grid-template-columns: 1fr 1fr; }
+
+.card {
+	gap: 14px;
+	display: flex;
+	cursor: pointer;
+	position: relative;
+	border-radius: 16px;
+	text-decoration: none;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 26px 22px 24px;
+	color: var(--card-text);
+	background: var(--card-bg);
+	box-shadow: var(--shadow-soft);
+	transform: translateY(18px) scale(1);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	transition: opacity var(--dur-card) var(--ease-elegant), transform 260ms var(--ease-elegant), box-shadow 260ms ease;
+}
+
+.card.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px) scale(1.03); }
+
+.card:focus-visible { outline-offset: 3px; outline: 3px solid var(--blue-bright); }
+
+.card.is-pressed { box-shadow: var(--shadow-soft); transform: translateY(-1px) scale(0.97); transition: transform 140ms ease, box-shadow 140ms ease; }
+
+.card-icon {
+	width: 46px;
+	height: 46px;
+	display: flex;
+	align-items: center;
+	color: var(--white);
+	border-radius: 12px;
+	justify-content: center;
+	background: linear-gradient(160deg, var(--blue-bright), var(--blue-dark));
+}
+
+.card-icon svg { width: 24px; height: 24px; }
+
+.card-body { gap: 4px; display: flex; flex-direction: column; }
+
+.card-title { font-size: 18px; font-weight: 700; color: var(--card-text); }
+
+.card-subtitle { line-height: 1.4; font-size: 12.5px; color: var(--card-subtitle); }
+
+.card-arrow {
+	top: 22px;
+	right: 20px;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	color: var(--blue-mid);
+	transition: transform 220ms ease;
+}
+
+.card:hover .card-arrow { transform: translateX(4px); }
+
+/* TEXTO DE AYUDA */
+.hint { font-size: 12.5px; color: var(--gray-subtle); transition: opacity 500ms var(--ease-elegant); }
+
+.hint.is-visible { opacity: 0.85; }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+	.stage { padding: 48px 18px 40px; }
+	.cards { gap: 16px; grid-template-columns: 1fr; }
+	.logo-svg { width: 90px; height: 50px; }
+}
+
+@media (max-width: 380px) {
+	.card { padding: 20px 16px 18px; }
+	.card-title { font-size: 16.5px; }
+}
+
+/* Accesibilidad: respeta preferencia de menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+	.anim-el, .card, .logo-wrap, .welcome, .hint { transition-duration: 1ms !important; }
+	.anim-el { opacity: 1 !important; transform: none !important; }
+}
