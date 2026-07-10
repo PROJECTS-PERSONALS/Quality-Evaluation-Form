@@ -354,9 +354,7 @@ document.getElementById("btnPrint").addEventListener("click", () => {
         const cedulas = Object.values(ANALYSTS);
         const nombres = Object.keys(ANALYSTS);
         const selectedCedula = document.getElementById("selectAnalista").value;
-        // Acumuladores para Promedio Grupal
-        const colTotals = [0, 0, 0, 0, 0];
-        const colCounts = [0, 0, 0, 0, 0];
+        // Acumuladores para Promedio Grupal (Estatus/Nota)
         let groupAvgSum = 0;
         let groupAvgCount = 0;
 
@@ -372,13 +370,7 @@ document.getElementById("btnPrint").addEventListener("click", () => {
             let cellsHtml = `<td class="mon-name">${nombre}</td>`;
             for (let i = 0; i < MAX_MONITOREOS; i++) {
                 const val = scores[i];
-                if (typeof val === "number") {
-                    cellsHtml += `<td>${val}%</td>`;
-                    colTotals[i] += val;
-                    colCounts[i] += 1;
-                } else {
-                    cellsHtml += `<td>0%</td>`;
-                }
+                cellsHtml += typeof val === "number" ? `<td>${val}%</td>` : `<td>0%</td>`;
             }
 
             const promedio = average(scores);
@@ -386,20 +378,14 @@ document.getElementById("btnPrint").addEventListener("click", () => {
                 groupAvgSum += promedio;
                 groupAvgCount += 1;
             }
-            cellsHtml += `<td class="mon-avg">${promedio}%</td>`;
             cellsHtml += `<td class="mon-status">${promedio}%</td>`;
 
             tr.innerHTML = cellsHtml;
             tbody.appendChild(tr);
         });
-        // Fila Promedio Grupal
-        for (let i = 0; i < MAX_MONITOREOS; i++) {
-            const el = document.getElementById(`groupM${i + 1}`);
-            const colAvg = colCounts[i] > 0 ? Math.round((colTotals[i] / colCounts[i]) * 10) / 10 : 0;
-            el.textContent = `${colAvg}%`;
-        }
+
+        // Fila Promedio Grupal → Estatus/Nota (promedio de los "Estatus/Nota" de todos los analistas)
         const groupAvg = groupAvgCount > 0 ? Math.round((groupAvgSum / groupAvgCount) * 10) / 10 : 0;
-        document.getElementById("groupAvg").textContent = `${groupAvg}%`;
         document.getElementById("groupStatus").textContent = `${groupAvg}%`;
     }
 
@@ -444,7 +430,7 @@ document.getElementById("btnPrint").addEventListener("click", () => {
 
         store = {};
         saveStore(store);
-        renderTable(); // recalcula Monitoreos 1–5, Promedio Individual, Estatus/Nota y Promedio Grupal a partir de "store" vacío
+        renderTable(); // recalcula Monitoreos 1–5, Estatus/Nota y Promedio Grupal a partir de "store" vacío
 
         showToast("El módulo Monitoreo de Llamadas fue reiniciado.", "success");
     });
