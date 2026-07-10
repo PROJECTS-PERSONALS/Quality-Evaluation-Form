@@ -26,7 +26,6 @@
 	--mon-thead: #12315f;
 	--mon-row-blue: #29abe2;
 	--mon-row-white: #ffffff;
-	--mon-avg-col: #29abe2;
 	--mon-group-row: #1668b3;
 	--blue-save: #1f5fa6;
 	--blue-save-dark: #163f70;
@@ -497,7 +496,6 @@ body {
 .monitoring-table tbody td.mon-name { font-weight: 600; text-align: left; color: var(--gray-text); }
 .monitoring-table tbody tr:nth-child(odd) { background: var(--mon-row-blue); color: #06263f; }
 .monitoring-table tbody tr:nth-child(even) { background: var(--mon-row-white); color: var(--gray-text); }
-.monitoring-table tbody td.mon-avg { font-weight: 700; color: #06263f; background: var(--mon-avg-col); }
 .monitoring-table tbody td.mon-status { font-weight: 700; background: var(--white); color: var(--gray-text); }
 .monitoring-table tbody tr.is-active-analyst { outline: 2px solid var(--blue-save); outline-offset: -2px; }
 .monitoring-group-row { background: var(--mon-group-row) !important; }
@@ -548,6 +546,5 @@ body {
 	.monitoring-title-bar { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 	.monitoring-table thead tr { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 	.monitoring-table tbody tr:nth-child(odd) { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-	.monitoring-table tbody td.mon-avg { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 	.monitoring-group-row { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }
