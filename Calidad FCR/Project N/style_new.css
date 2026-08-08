@@ -524,6 +524,9 @@ body {
 }
 
 /* PRINT STYLES */
+/* print-text: div proxy que reemplaza auto-textarea al imprimir. Invisible en pantalla. */
+.print-text { display: none; }
+
 @media print {
 	body { font-size: 11px; background: #fff; }
 	.page-wrapper { padding: 0; max-width: 100%; }
@@ -531,7 +534,27 @@ body {
 	.section-card { box-shadow: none; }
 	.btn-overview { display: none; }
 	.overview-row { display: none !important; }
-	.auto-textarea { background: transparent; border: 1px solid #ccc; }
+
+	/* Ocultar textareas originales — el proxy div los reemplaza */
+	.auto-textarea { display: none !important; }
+
+	/* Div proxy: texto completo, sin cortes, mismo estilo que la celda */
+	.print-text {
+		display: block !important;
+		width: 100%;
+		min-height: 0;
+		font-size: 11px;
+		line-height: 1.6;
+		color: var(--gray-text);
+		font-family: var(--font-main);
+		white-space: pre-wrap;       /* respeta saltos de línea */
+		word-break: break-word;
+		overflow: visible;
+		padding: 7px 9px;
+		background: transparent;
+		border: none;
+	}
+
 	.criteria-row { break-inside: avoid; }
 	.block-header-row { break-inside: avoid; }
 	.score-final-value { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
