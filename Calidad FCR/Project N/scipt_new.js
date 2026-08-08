@@ -297,9 +297,34 @@ document.getElementById("btnClear").addEventListener("click", () => {
     updateKnockoutAvailability();
 });
 
-/* 8. BOTÓN IMPRIMIR */
+/* 8. BOTÓN IMPRIMIR — patrón "div limpio" para imprimir textareas completos.
+   Antes de imprimir: reemplaza cada .auto-textarea por un <div class="print-text">
+   con su contenido completo (white-space: pre-wrap).
+   Tras imprimir (afterprint): restaura los textareas originales. */
 document.getElementById("btnPrint").addEventListener("click", () => {
+    const reemplazos = [];
+
+    document.querySelectorAll(".auto-textarea").forEach(ta => {
+        const proxy = document.createElement("div");
+        proxy.className = "print-text";
+        proxy.textContent = ta.value;
+        ta.parentNode.insertBefore(proxy, ta);
+        ta.style.display = "none";
+        reemplazos.push({ ta, proxy });
+    });
+
     window.print();
+
+    function restaurar() {
+        reemplazos.forEach(({ ta, proxy }) => {
+            ta.style.display = "";
+            proxy.remove();
+        });
+    }
+
+    /* afterprint es lo más fiable; setTimeout como fallback */
+    window.addEventListener("afterprint", restaurar, { once: true });
+    setTimeout(restaurar, 1500);
 });
 
 /*
