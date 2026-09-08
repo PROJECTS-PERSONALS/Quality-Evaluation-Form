@@ -96,15 +96,13 @@ function updateResultBadge(key) {
     const pct = CRITERIA[key].pct;
 
     badge.className = "result-badge";
-    if (val === "si") {
+    if (val === "si" || val === "na") {
+        // N/A puntúa igual que Sí: mismo porcentaje y mismo estilo visual
         badge.textContent = `${pct}%`;
         badge.classList.add("is-si");
     } else if (val === "no") {
         badge.textContent = "0%";
         badge.classList.add("is-no");
-    } else if (val === "na") {
-        badge.textContent = "N/A";
-        badge.classList.add("is-na");
     } else {
         badge.textContent = "—";
     }
@@ -113,7 +111,8 @@ function updateResultBadge(key) {
 function calcBlockScore(bloque) {
     let total = 0;
     Object.entries(CRITERIA).forEach(([k, meta]) => {
-        if (meta.bloque === bloque && state[k] === "si") {
+        if (meta.bloque === bloque && (state[k] === "si" || state[k] === "na")) {
+            // N/A suma el mismo puntaje que Sí
             total += meta.pct;
         }
     });
@@ -367,6 +366,26 @@ document.getElementById("btnPrint").addEventListener("click", () => {
     }
 
     let store = loadStore(); // { [cedula]: number[] } — cada número es un % ya guardado
+
+    /* Al guardar un monitoreo, si la "Fecha Evaluación" no es la de hoy,
+       se restablece automáticamente a la fecha actual. */
+    function resetFechaAHoySiCambio() {
+        const fechaDisplayEl = document.getElementById("fechaDisplay");
+        const fechaPickerEl = document.getElementById("fechaPicker");
+        if (!fechaDisplayEl || !fechaPickerEl) return;
+
+        const hoy = new Date();
+        const d = String(hoy.getDate()).padStart(2, "0");
+        const m = String(hoy.getMonth() + 1).padStart(2, "0");
+        const y = hoy.getFullYear();
+        const hoyDisplay = `${d}/${m}/${y}`;
+        const hoyInput = `${y}-${m}-${d}`;
+
+        if (fechaDisplayEl.textContent.trim() !== hoyDisplay) {
+            fechaDisplayEl.textContent = hoyDisplay;
+            fechaPickerEl.value = hoyInput;
+        }
+    }
     /* Cálculos */
     function average(arr) {
         if (!arr || arr.length === 0) return 0;
@@ -444,6 +463,10 @@ document.getElementById("btnPrint").addEventListener("click", () => {
         store[cedula].push(scoreValue);
         saveStore(store);
         renderTable();
+
+        // Si se guardó un monitoreo con una fecha distinta a la actual,
+        // la fecha del formulario vuelve a colocarse en el día de hoy.
+        resetFechaAHoySiCambio();
 
         const slot = store[cedula].length;
         showToast(`Monitoreo ${slot} guardado para ${nombre}: ${scoreValue}%`, "success");
