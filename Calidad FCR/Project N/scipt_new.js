@@ -1,10 +1,10 @@
 /* FORMATO DE EVALUACIÓN DE LA CALIDAD Y FCR script.js — Lógica completa */
 // Mapa analistas: nombre → cédula 
 const ANALYSTS = {
+    "Juan Camilo Henao Jiménez": "1001137159",
     "Juan Diego Mazo Lezcano": "1020110871",
     "Juan José Santana Garzón": "1022142959",
     "Juan Pablo Gaviria Correa": "1152464110",
-    "Julián García Araque": "1000401771",
     "Kevin Daniel Mosquera Córdoba": "1076819340",
     "William David Jarava Solano": "1104410026",
     "Yin Carlos Martínez Pérez": "72203802",
